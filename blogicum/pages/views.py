@@ -57,10 +57,10 @@ def category(request, category_slug):
                                                   'post_list': posts})
 
 
-
 def index(request):
     inverted_posts = list(reversed(posts))
-    return render(request, 'blog/index.html', {'post_list': inverted_posts})
+    return render(request, 'blog/index.html', 
+              {'post_list': inverted_posts})
 
 
 def detail(request, id):
