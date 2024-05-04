@@ -11,4 +11,7 @@ def category(request, category_slug):  # Исправлено: Имя функц
     return render(request, 'blog/category.html', {'category_slug': category_slug})  # Исправлено: Указан правильный путь к шаблону 'category.html'
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'blog/index.html')
+
+def detail(request):
+    return render(request, 'blog/detail.html')
