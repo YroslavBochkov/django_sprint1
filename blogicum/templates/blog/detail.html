@@ -27,7 +27,7 @@
               Дата: 25 октября 1659 года
             </li>
             <li>
-              Категория: <a href="not-my-day">not-my-day</a>
+              Категория: <a href="{% url 'blog:category_posts' category_slug=post.category %}">{{ post.category }}</a>
             </li>
           </ul>         
           <p>
@@ -44,4 +44,3 @@
     {% include "includes/footer.html" %}
   </body>
 </html>
-

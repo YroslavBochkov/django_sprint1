@@ -13,62 +13,29 @@
                 <h1>Лента записей</h1>                        
                 <!-- Перебираем в цикле все посты -->
                 <hr>
+                {% for post in post_list %}
                 <article>
                     <ul>
                         <li>
-                            Место: Остров отчаянья              
+                            Место: {{ post.location }}              
                         </li>
                         <li>
-                            Дата: 25 октября 1659 года
+                            Дата: {{ post.date }}
                         </li>
                         <li>
-                            Категория: <a href="not-my-day">not-my-day</a>
+                            Категория: <a href="{% url 'blog:category_posts' category_slug=post.category %}">{{ post.category }}</a>
                         </li>
                     </ul>          
                     <!-- Первые 10 слов -->
                     <p>
-                        Всю ночь и весь день шел дождь и дул сильный ...
+                        {{ post.text|truncatewords:10 }}
                     </p>
-                    <a href="{% url 'pages:detail' %}">Читать полный текст</a>
+                    <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
                 </article>
+                {% if forloop.last %}
                 <hr>
-                <article>
-                    <ul>
-                        <li>
-                            Место: Остров отчаянья              
-                        </li>
-                        <li>
-                            Дата: 1 октября 1659 года
-                        </li>
-                        <li>
-                            Категория: <a href="not-my-day">not-my-day</a>
-                        </li>
-                    </ul>
-                    <!-- Первые 10 слов -->
-                    <p>
-                        Проснувшись поутру, я увидел, что наш корабль сняло с мели ...
-                    </p>
-                    <a href="{% url 'pages:detail' %}">Читать полный текст</a>
-                </article>
-                <hr>
-                <article>
-                    <ul>
-                        <li>
-                            Место: Остров отчаянья              
-                        </li>
-                        <li>
-                            Дата: 30 сентября 1659 года.
-                        </li>
-                        <li>
-                            Категория: <a href="travel">travel</a>
-                        </li>
-                    </ul>
-                    <!-- Первые 10 слов -->
-                    <p>
-                        Наш корабль, застигнутый в открытом море страшным штормом, потерпел крушение. ...
-                    </p>
-                    <a href="{% url 'pages:detail' %}">Читать полный текст</a>
-                </article>                 
+                {% endif %}
+                {% endfor %}
             </div>
         </main>
     </body>

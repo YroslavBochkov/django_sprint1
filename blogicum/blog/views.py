@@ -1,4 +1,3 @@
-# blog/views.py
 from django.shortcuts import render
 
 posts = [
@@ -45,16 +44,15 @@ posts = [
 ]
 
 def index(request):
-    return render(request, 'blog/index.html', {'posts': posts})
+    inverted_posts = list(reversed(posts))  # Формирование списка в обратном порядке
+    return render(request, 'blog/index.html', {'post_list': inverted_posts})  # Передача переменной в контексте
+
 
 def post_detail(request, id):
-    # Находим пост по переданному идентификатору
     post = next((post for post in posts if post['id'] == id), None)
     if post is None:
-        # Обработка случая, если пост с указанным id не найден
         return render(request, 'blog/post_not_found.html')
     return render(request, 'blog/detail.html', {'post': post})
-
 
 def rules(request):
     return render(request, 'blog/rules.html')
