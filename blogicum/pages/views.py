@@ -42,18 +42,26 @@ posts = [
                 укутывал их, чтобы не испортились от дождя.''',
     },
 ]
+
+
 def about(request):
     return render(request, 'pages/about.html')
+
 
 def rules(request):
     return render(request, 'pages/rules.html')
 
+
 def category(request, category_slug):
-    return render(request, 'blog/category.html', {'category_slug': category_slug, 'post_list': posts})
+    return render(request, 'blog/category.html', {'category_slug': category_slug,
+                                                  'post_list': posts})
+
+
 
 def index(request):
     inverted_posts = list(reversed(posts))
     return render(request, 'blog/index.html', {'post_list': inverted_posts})
+
 
 def detail(request, id):
     post = next((post for post in posts if post['id'] == id), None)

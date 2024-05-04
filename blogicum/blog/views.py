@@ -43,9 +43,10 @@ posts = [
     },
 ]
 
+
 def index(request):
-    inverted_posts = list(reversed(posts))  # Формирование списка в обратном порядке
-    return render(request, 'blog/index.html', {'post_list': inverted_posts})  # Передача переменной в контексте
+    inverted_posts = list(reversed(posts))
+    return render(request, 'blog/index.html', {'post_list': inverted_posts})
 
 
 def post_detail(request, id):
@@ -54,11 +55,15 @@ def post_detail(request, id):
         return render(request, 'blog/post_not_found.html')
     return render(request, 'blog/detail.html', {'post': post})
 
+
 def rules(request):
     return render(request, 'blog/rules.html')
+
 
 def about(request):
     return render(request, 'blog/about.html')
 
+
 def category_posts(request, category_slug):
-    return render(request, 'blog/category.html', {'category_slug': category_slug})
+    return render(request, 'blog/category.html',
+                  {'category_slug': category_slug})
