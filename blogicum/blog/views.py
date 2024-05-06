@@ -49,19 +49,14 @@ def index(request):
     return render(request, 'blog/index.html', {'post_list': inverted_posts})
 
 
+# Создание словаря для хранения постов
+posts_dict = {post['id']: post for post in posts}
+
 def post_detail(request, id):
-    post = next((post for post in posts if post['id'] == id), None)
+    post = posts_dict.get(id)
     if post is None:
         return render(request, 'blog/post_not_found.html')
     return render(request, 'blog/detail.html', {'post': post})
-
-
-def rules(request):
-    return render(request, 'blog/rules.html')
-
-
-def about(request):
-    return render(request, 'blog/about.html')
 
 
 def category_posts(request, category_slug):
