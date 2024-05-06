@@ -52,6 +52,7 @@ def index(request):
 # Создание словаря для хранения постов
 posts_dict = {post['id']: post for post in posts}
 
+
 def post_detail(request, id):
     post = posts_dict.get(id)
     if post is None:
