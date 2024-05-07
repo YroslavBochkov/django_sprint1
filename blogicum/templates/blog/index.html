@@ -5,40 +5,46 @@
 {% endblock %}
 
 {% block content %}
-  </head>
-  <body>	   
-    <main>
-      <div class="container py-5">
-        <h1>Лента записей</h1>                        
-        {% comment %}
-        Перебираем в цикле все посты
+<body>	    
+  <main>
+    <div class="container py-5">
+      <h1>Лента записей</h1>                         
+
+      {% comment %}
+      Перебираем в цикле все посты
+      {% endcomment %}
+
+      <hr>
+
+      {% for post in post_list %}
+      <article>
+        <ul>
+          <li>
+            Место: {{ post.location }}               
+          </li>
+          <li>
+            Дата: {{ post.date }}
+          </li>
+          <li>
+            Категория: <a href="{% url 'blog:category_posts' category_slug=post.category %}">{{ post.category }}</a>
+          </li>
+        </ul>   
+
+        {% comment %}       
+        Первые 10 слов
         {% endcomment %}
-        <hr>
-        {% for post in post_list %}
-        <article>
-          <ul>
-            <li>
-              Место: {{ post.location }}              
-            </li>
-            <li>
-              Дата: {{ post.date }}
-            </li>
-            <li>
-              Категория: <a href="{% url 'blog:category_posts' category_slug=post.category %}">{{ post.category }}</a>
-            </li>
-          </ul>   
-          {% comment %}       
-          Первые 10 слов
-          {% endcomment %}
-          <p>
-            {{ post.text|truncatewords:10 }}
-          </p>
-          <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
-        </article>
-        {% endfor %}
-      </div>
-    </main>
-  </body>
+
+        <p>
+          {{ post.text|truncatewords:10 }}
+        </p>
+        <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
+      </article>
+      {% endfor %}
+
+    </div>
+  </main>
+</body>
 {% endblock %}
+
 {% include "includes/footer.html" %}
 </html>

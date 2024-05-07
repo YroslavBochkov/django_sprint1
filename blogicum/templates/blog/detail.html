@@ -1,28 +1,28 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  Остров отчаянья. 25 октября 1659 года
+  {% if post %}
+    {{ post.location }}. {{ post.date }}
+  {% endif %}
 {% endblock %}
 
 {% block content %}
-  <main>
-    <div class="container py-5">
-      <article>
-        <ul>
-          <li>
-            Место: {{ post.location }}              
-          </li>
-          <li>
-            Дата: {{ post.date }}
-          </li>
-          <li>
-            Категория: <a href="{% url 'blog:category_posts' category_slug=post.category %}">{{ post.category }}</a>
-          </li>
-        </ul>         
-        <p>
-          {{ post.text }}
-        </p>
-      </article>                
-    </div>
-  </main>
+  <div class="container py-5">
+    <article>
+      <ul>
+        <li>
+          Место: {{ post.location }}              
+        </li>
+        <li>
+          Дата: {{ post.date }}
+        </li>
+        <li>
+          Категория: <a href="{% url 'blog:category_posts' category_slug=post.category %}">{{ post.category }}</a>
+        </li>
+      </ul>         
+      <p>
+        {{ post.text|linebreaks }}
+      </p>
+    </article>                
+  </div>
 {% endblock %}
