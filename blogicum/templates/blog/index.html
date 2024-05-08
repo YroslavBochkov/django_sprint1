@@ -1,17 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}
-  Лента записей
-{% endblock %}
-
-{% block content %}
-<body>	    
+{% block content %}   
   <main>
     <div class="container py-5">
       <h1>Лента записей</h1>                         
 
       {% comment %}
-      Перебираем в цикле все посты
+        Перебираем в цикле все посты
       {% endcomment %}
 
       <hr>
@@ -31,7 +26,7 @@
         </ul>   
 
         {% comment %}       
-        Первые 10 слов
+          Первые 10 слов
         {% endcomment %}
 
         <p>
@@ -43,7 +38,6 @@
 
     </div>
   </main>
-</body>
 {% endblock %}
 
 {% include "includes/footer.html" %}

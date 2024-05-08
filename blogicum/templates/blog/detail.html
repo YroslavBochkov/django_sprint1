@@ -1,11 +1,5 @@
 {% extends 'base.html' %}
 
-{% block title %}
-  {% if post %}
-    {{ post.location }}. {{ post.date }}
-  {% endif %}
-{% endblock %}
-
 {% block content %}
   <div class="container py-5">
     <article>
@@ -21,7 +15,7 @@
         </li>
       </ul>         
       <p>
-        {{ post.text|linebreaks }}
+        {{ post.text|linebreaksbr }}
       </p>
     </article>                
   </div>

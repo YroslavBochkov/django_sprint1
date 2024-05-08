@@ -8,19 +8,19 @@
       </a>        
       <ul class="nav  nav-pills">
         <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.namespace == 'blog' and request.resolver_match.url_name == 'index' %}active{% endif %}" 
+          <a class="nav-link {% if request.resolver_match.view_name == 'blog:index' %}active{% endif %}" 
              href="{% url 'blog:index' %}">
             Лента записей
           </a>
         </li>
         <li class="nav-item">              
-          <a class="nav-link {% if request.resolver_match.namespace == 'pages' and request.resolver_match.url_name == 'about' %}active{% endif %}" 
+          <a class="nav-link {% if request.resolver_match.view_name == 'pages:about' %}active{% endif %}" 
              href="{% url 'pages:about' %}">
             О проекте
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.namespace == 'pages' and request.resolver_match.url_name == 'rules' %}active{% endif %}" 
+          <a class="nav-link {% if request.resolver_match.view_name == 'pages:rules' %}active{% endif %}" 
              href="{% url 'pages:rules' %}">
             Наши правила
           </a>
